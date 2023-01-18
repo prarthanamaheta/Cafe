@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load crispy_forms_tags %}
+<meta charset="UTF-8">
+<title>MENU</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+</style>
+<body>
+<!-- Start Content -->
+<div id="home" class="w3-content ">
+
+    <!-- Navbar (Sits on top) -->
+    <div class="w3-top w3-bar w3-xlarge w3-black w3-opacity-min">
+        <form method="GET" class="col-xl-7">
+            <label href="#" class="w3-bar-item w3-button">HOME</label>
+            <label href="#" class="w3-bar-item w3-button">{{ filterset.form.search|as_crispy_field }}</label>
+            <button class="btn btn-primary align-middle btn-block" style="margin-top: 14px">Search</button>
+        </form>
+    </div>
+
+    <!-- Menu -->
+    <div id="menu" class="w3-container w3-black w3-xxlarge w3-padding-64">
+        <h1 class="w3-center w3-jumbo w3-padding-32">THE MENU</h1>
+        <div class="w3-row w3-center w3-border w3-border-dark-grey">
+
+            {% for category in categorys %}
+                <a href="#">
+                    <div class="w3-third w3-padding-large w3-red">{{ category }}</div>
+                </a>
+                <div id="pizza" class="w3-container w3-white w3-padding-32">
+                {% for menu in menus %}
+                    {% if menu.categorys.name == category %}
+
+                        <img src="{{ menu.image.url }}" width="100" height="100">
+                        {% if menu.image_url %}
+                            <img src="{{ menu.image_url }}" width="100" height="100">
+                            {% endif %}
+                        <h1><b>{{ menu.name }}</b> <span
+                                class="w3-right w3-tag w3-dark-grey w3-round">{{ menu.price }}</span></h1>
+                        {% if menu.items %}
+                            <p class="w3-text-grey">{{ menu.items }}</p>
+                        {% endif %}
+                        <hr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

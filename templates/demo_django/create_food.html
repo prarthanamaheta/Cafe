@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load crispy_forms_tags %}
+<meta charset="UTF-8">
+<title>MENU</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+</style>
+<body>
+<!-- Start Content -->
+<div id="home" class="w3-content ">
+
+
+    <!-- Menu -->
+    <div id="menu" class="w3-container w3-black w3-xxlarge w3-padding-64">
+        <h1 class="w3-center w3-jumbo w3-padding">Add Food</h1>
+        <div class="w3-row w3-center w3-border w3-border-dark-grey">
+
+            <form method="POST" class="col-xl-7" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Name:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.name |as_crispy_field }}</label>
+                </div>
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Catgeory:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.categorys |as_crispy_field }}</label>
+                </div>
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Type:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.types|as_crispy_field  }}</label>
+                </div>
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Price:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.price|as_crispy_field }}</label>
+                </div>
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Image:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.image|as_crispy_field }}</label>
+                </div>
+                <div>
+                    <label href="#" class="w3-bar-item w3-button">Food Image URL:</label>
+                    <label href="#" class="w3-bar-item w3-button">{{ form.image_url|as_crispy_field }}</label>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary align-middle btn-block" style="margin-top: 14px">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

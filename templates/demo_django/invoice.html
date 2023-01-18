@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+<br>
+
+<h2> We {{ customer.name }} Team, Thank you "{{ visitor.name }}" for choosing us.Please Rate us at our website</h2>
+<h3>Your Token ID: {{ visitor.orders.token }}</h3>
+<h3>Your Total bill(including discount): {{ visitor.orders.total_payment }}</h3>
+{% if visitor.orders.payment_mode %}
+<h3>Payment Mode: {{ visitor.orders.payment_mode }}</h3>
+{% endif %}
+
+<h3>
+    Contact Details:
+</h3>
+Email: {{ customer.email }} <br/>
+
+<br>
+
+<h2>Order Details:</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>Food</th>
+        <th>Price</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for food_details in food %}
+        <tr>
+            <td>{{ food_details.name }}</td>
+            <td>{{ food_details.price }}</td>
+        </tr>
+    {% endfor %}
+    <br>
+    <tr>
+        <td>
+            Total paid amount:{{ visitor.orders.total_payment }} rs
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
